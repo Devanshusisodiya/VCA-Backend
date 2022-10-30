@@ -43,7 +43,7 @@ router.get('/classify', async (req, res)=>{
             args: [fileName]
         }
 
-        process.run('processes/classify.py', options, function (err, results) {
+        process.run('../processes/classify.py', options, function (err, results) {
             if (err) throw err;
             // results is an array consisting of messages collected during execution
             console.log('image classified');
