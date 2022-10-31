@@ -18,8 +18,8 @@ def classify(name):
     index = np.argmax(pred)
 
     # opening log file to save classification result
-    log_file = open('./processes/log.txt', 'w')
-    log_file.write(class_names[index])
+    log_file = open('./processes/log.txt', 'a')
+    log_file.writelines(class_names[index] + '\n')
     log_file.close() # closing file
 
     return class_names[index]

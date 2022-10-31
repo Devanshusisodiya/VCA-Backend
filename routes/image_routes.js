@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const fs = require('fs')
 
 // generic testing route
 router.get('/test', (req, res)=>{
@@ -32,7 +33,7 @@ router.post('/up', async (req, res)=>{
 })
 
 // route to classify the uploaded image
-router.get('/classify', async (req, res)=>{
+router.post('/classify', async (req, res)=>{
     const fileName = req.body.fileName
 
     try{
@@ -43,7 +44,7 @@ router.get('/classify', async (req, res)=>{
             args: [fileName]
         }
 
-        process.run('../processes/classify.py', options, function (err, results) {
+        process.run('./processes/classify.py', options, function (err, results) {
             if (err) throw err;
             // results is an array consisting of messages collected during execution
             console.log('image classified');
